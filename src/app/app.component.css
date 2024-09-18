@@ -1,0 +1,37 @@
+/*
+Took Reference from Provided lecture file.
+ */
+.car {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f0f0f0;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+}
+.Car {
+  background-color: #fff;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.Car h3 {
+  margin: 0;
+  color: #007bff;
+}
+.Car p {
+  margin: 5px 0;
+  color: #555;
+}
+.Car p:first-child {
+  margin-top: 10px;
+}
+.Car p:last-child {
+  margin-bottom: 0;
+}

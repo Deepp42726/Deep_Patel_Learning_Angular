@@ -1,14 +1,13 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>JavaScript Project</title>
-</head>
-<body>
-<p>Hi</p>
-<h1>Welcome to Deep's Project</h1>
-<p>Project Title {{title}}</p>
-<p>Hey I am {{ myName }}</p>
-<p>I am with course {{ course }}</p>
-<p>Subject is {{subjectName}}</p>
-</body>
-</html>
+
+
+<div class="car">
+  <h2>{{ title }}</h2>
+
+  <div *ngFor="let car of carList" class="Car">
+
+    <h3>Specification of cars = {{ car.modelName }} - {{ car.companyName }}</h3>
+    <p> Making Year= {{ car.makingYear }}</p>
+    <p *ngIf="car.color">Color of car= {{ car.color }}</p>
+    <p>Is Electric?=  {{ car.isElectric ? 'Yes' : 'No' }}</p>
+  </div>
+</div>
