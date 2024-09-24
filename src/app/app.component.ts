@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { JsonPipe, NgFor } from "@angular/common";
 import {Car} from "./car";
+import {CarListComponent} from "./car-list/car-list.component";
 
 
 @Component({
 
-  imports: [RouterOutlet , NgFor, JsonPipe ],
+  imports: [RouterOutlet, NgFor, JsonPipe, CarListComponent],
   selector: 'app-root',
   templateUrl: './app.component.html',
   standalone: true,

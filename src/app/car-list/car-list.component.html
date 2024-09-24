@@ -1,1 +1,23 @@
 <p>car-list works!</p>
+
+<table>
+  <thead>
+  <tr>
+    <th>Company Name</th>
+    <th>Model Name</th>
+    <th>Making Year</th>
+    <th>Color</th>
+    <th>Is Electric</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let car of carList">
+    <td>{{ car.companyName }}</td>
+    <td>{{ car.modelName }}</td>
+    <td>{{ car.makingYear }}</td>
+    <td>{{ car.color }}</td>
+    <td>{{ car.isElectric ? 'Yes' : 'No' }}</td>
+  </tr>
+  </tbody>
+</table>
+
