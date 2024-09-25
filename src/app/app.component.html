@@ -9,13 +9,9 @@
     <p> Making Year= {{ car.makingYear }}</p>
     <p *ngIf="car.color">Color of car= {{ car.color }}</p>
     <p>Is Electric?=  {{ car.isElectric ? 'Yes' : 'No' }}</p>
-<table>
 
-  <h1>{{title}}</h1>
-    <app-car-list> Specification of cars = {{ car.modelName }} - {{ car.companyName }} </app-car-list>
-  <app-car-list>Making Year= {{ car.makingYear }}</app-car-list>
-  <app-car-list>{{ car.color }}</app-car-list>
-  <app-car-list>{{ car.isElectric ? 'Yes' : 'No' }}</app-car-list>
-</table>
   </div>
+  <app-car-list></app-car-list>
 </div>
+
+
