@@ -11,7 +11,7 @@ import {NgForOf, NgIf} from '@angular/common';
 })
 
 export class CarListItemComponent {
- @Input() car?: Car;
+ @Input() car!: Car;
 
 
 }
