@@ -1,8 +1,7 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { NgForOf } from '@angular/common';
 import { Car } from '../models/car';
 import { CarService } from '../services/car.service';
-
 
 @Component({
   selector: 'app-car-list',
@@ -12,10 +11,14 @@ import { CarService } from '../services/car.service';
   templateUrl: './car-list.component.html',
   styleUrls: ['./car-list.component.scss']
 })
-export class CarListComponent {
+export class CarListComponent implements OnInit {
+  displayedColumns: string[] = ['id', 'make', 'model', 'year'];
   carList: Car[] = [];
-
   constructor(private carService: CarService) {
-    this.carList = this.carService.getCars();
+  }
+
+  ngOnInit() {
+    this.carService.getCars().subscribe({
+    });
   }
 }

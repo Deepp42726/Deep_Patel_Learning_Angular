@@ -6,3 +6,6 @@ export interface Car {
   color?: string;
   isElectric: boolean;
 }
+
+export class carList {
+}
