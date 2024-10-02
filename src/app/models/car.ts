@@ -1,12 +1,8 @@
-
 export interface Car {
   id: number;
-  modelName: string;
   companyName: string;
+  modelName: string;
   makingYear: number;
-  color?: string;
+  color: string;
   isElectric: boolean;
-}
-
-export class carList {
 }

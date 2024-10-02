@@ -26,7 +26,7 @@ export class CarService {
   }
 
   updateCar(updatedCar: Car): Observable<Car[]> {
-    const index = this.cars.findIndex(car => car.id === updatedCar.id);
+    const index = this.cars.findIndex(car => updatedCar.id === car.id);
     if (index !== -1) {
       this.cars[index] = updatedCar;
     }
