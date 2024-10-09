@@ -1,0 +1,27 @@
+.page-not-found {
+  text-align: center;
+  margin-top: 60px;
+}
+
+.page-not-found h2 {
+  color: #2148bd;
+  font-size: 3.1rem;
+}
+
+.page-not-found p {
+  font-size: 2.2rem;
+  margin-bottom: 15px;
+}
+
+.home-link {
+  color: #2148bd;
+  font-weight: bold;
+  padding: 15px 25px;
+  border: 4px solid #2148bd;
+  border-radius: 5px;
+}
+
+.home-link:hover {
+  background-color: #2148bd;
+  color: Black;
+}

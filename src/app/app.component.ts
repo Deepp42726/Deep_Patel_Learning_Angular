@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import {RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';
 import { JsonPipe, NgFor } from "@angular/common";
 import {CarListComponent} from "./car-list/car-list.component";
 import {carList} from "./data/mock-component";
@@ -7,7 +7,7 @@ import {carList} from "./data/mock-component";
 
 @Component({
 
-  imports: [RouterOutlet, NgFor, JsonPipe, CarListComponent],
+  imports: [RouterOutlet, NgFor, JsonPipe, CarListComponent, RouterLinkActive, RouterLink],
   selector: 'app-root',
   templateUrl: './app.component.html',
   standalone: true,
