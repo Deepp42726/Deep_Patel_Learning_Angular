@@ -1,37 +1,57 @@
-/*
-Took Reference from Provided lecture file.
- */
-.car {
-  max-width: 600px;
-  margin: 0 auto;
+/* Container Styling */
+.container {
+  max-width: 800px;
+  margin: 20px auto;
   padding: 20px;
-  background-color: #f0f0f0;
+  border: 1px solid #ddd;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  background-color: #f9f9f9;
 }
+
 h2 {
   text-align: center;
   color: #333;
-  margin-bottom: 20px;
 }
-.Car {
-  background-color: #fff;
-  padding: 15px;
-  margin-bottom: 15px;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+h3 {
+  color: #007BFF;
 }
-.Car h3 {
-  margin: 0;
-  color: #007bff;
-}
-.Car p {
+
+/* Paragraph Styling */
+p {
   margin: 5px 0;
   color: #555;
 }
-.Car p:first-child {
-  margin-top: 10px;
+
+/* Horizontal Rule Styling */
+hr {
+  margin: 20px 0;
+  border: none;
+  height: 1px;
+  background-color: #ddd;
 }
-.Car p:last-child {
-  margin-bottom: 0;
+
+/* No Consoles Message Styling */
+.no-consoles {
+  text-align: center;
+  color: #888;
+  font-style: italic;
+  margin-top: 20px;
+}
+
+/* Navigation Bar Styling */
+nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+nav ul li {
+  display: inline;
+  margin-right: 15px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: blue;
 }

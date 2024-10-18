@@ -1,5 +1,14 @@
-.content-item {
+.console-item {
   border: 2px solid black;
   padding: 10px;
-  margin-bottom: 10px;
+  margin: 10px;
+  background-color: #b2b2b2;
+  border-radius: 5px;
+}
+.even-item {
+  background-color: Red;
+}
+
+.odd-item {
+  background-color: blue;
 }

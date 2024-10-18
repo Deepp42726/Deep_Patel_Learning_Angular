@@ -1,25 +1,34 @@
-
-
-<div class="car">
+<div class="container">
   <h2>{{ title }}</h2>
 
-  <div *ngFor="let car of carList" class="Car">
-
-    <h3>Specification of cars = {{ car.modelName }} - {{ car.companyName }}</h3>
-    <p> Making Year= {{ car.makingYear }}</p>
-    <p *ngIf="car.color">Color of car= {{ car.color }}</p>
-    <p>Is Electric?=  {{ car.isElectric ? 'Yes' : 'No' }}</p>
-
+  <div *ngIf="selectedCar">
+    <app-car-list-item [car]="selectedCar"></app-car-list-item>
   </div>
-  <app-car-list></app-car-list>
 
-</div>
-<div class="nav-bar">
-  <nav>
-    <a routerLink="/cars" routerLinkActive="active">Car List</a>
-    <br>
-    <br>
-    <a routerLink="/modify-car-list-item" routerLinkActive="active">Modify car</a>
-  </nav>
-</div>
+  <div class="nav-bar">
+    <nav>
+      <a routerLink="/content-list-component" routerLinkActive="active">Home</a>
+      <br><br>
+      <a routerLink="/modify-list-item" routerLinkActive="active">Modify Car</a>
+    </nav>
+  </div>
 
+  <div *ngFor="let car of carList" class="car-item">
+    <h3>{{ car.modelName }} - {{ car.companyName }}</h3>
+    <p>Making Year: {{ car.makingYear }}</p>
+    <p *ngIf="car.color">Color: {{ car.color }}</p>
+    <p>Is Electric? {{ car.isElectric ? 'Yes' : 'No' }}</p>
+
+    <!-- Image of the car -->
+<!--    <img-->
+<!--    //  [ngSrc]="'/' + car.imageUrl"-->
+<!--      alt="{{ car.modelName }} Car"-->
+<!--      width="598"-->
+<!--      height="360"-->
+<!--    />-->
+<!--    <hr />-->
+ </div>
+
+  <!-- Router outlet for navigation -->
+  <router-outlet></router-outlet>
+</div>

@@ -1,9 +1,10 @@
 <p>car-list-item works!</p>
 
 
-<div class="content-item">
-  <h3>{{ car.companyName }} - {{ car.modelName }}</h3>
-  <h2>Year: {{ car.makingYear }}</h2>
-  <h1>Color: {{ car.color }}</h1>
-  <h1>Electric: {{ car.isElectric ? 'Yes' : 'No' }}</h1>
+<div [ngClass]="{'even-item': !isOdd, 'odd-item': isOdd}">
+  <h2>{{ car.modelName }} ({{ car.companyName }})</h2>
+  <p>Release Year: {{ car.makingYear }}</p>
+  <p>Color: {{ car.color }} GB</p>
+  <p>Is Electric?: {{ car.isElectric ? 'Yes' : 'No'}}</p>
+
 </div>

@@ -1,21 +1,34 @@
-import { Component } from '@angular/core';
-import {RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';
-import { JsonPipe, NgFor } from "@angular/common";
-import {CarListComponent} from "./car-list/car-list.component";
-import {carList} from "./data/mock-component";
-
+import { Component, OnInit } from '@angular/core';
+import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { JsonPipe, NgFor, NgIf } from "@angular/common";
+import { CarListComponent } from "./car-list/car-list.component";
+import { CarService } from './services/car.service';
+import { Car } from './models/car';
+import {CarListItemComponent} from "./car-list-item/car-list-item.component";  // Corrected the type
 
 @Component({
-
-  imports: [RouterOutlet, NgFor, JsonPipe, CarListComponent, RouterLinkActive, RouterLink],
   selector: 'app-root',
-  templateUrl: './app.component.html',
   standalone: true,
+  imports: [RouterOutlet, NgFor, JsonPipe, CarListComponent, RouterLinkActive, RouterLink, NgIf, CarListItemComponent],
+  templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'List of Cars';
 
-  protected readonly carList = carList;
+  selectedCar?: Car;
+  carList: Car[] = [];
+  selectedCarId = 2;
+
+  constructor(private carService: CarService) {}
+
+  ngOnInit(): void {
+    this.carService.getCarById(this.selectedCarId).subscribe(car => {
+      this.selectedCar = car;
+    });
+
+    this.carService.getCars().subscribe(cars => {
+      this.carList = cars;
+    });
+  }
 }
