@@ -3,11 +3,12 @@ import { NgForOf } from '@angular/common';
 import { Car } from '../models/car';
 import { CarListItemComponent } from "../car-list-item/car-list-item.component";
 import { CarService } from '../services/car.service';
+import {RouterLink} from "@angular/router";
 
 @Component({
   selector: 'app-car-list',
   standalone: true,
-  imports: [NgForOf , CarListItemComponent],
+  imports: [NgForOf, CarListItemComponent, RouterLink],
 
   templateUrl: './car-list.component.html',
   styleUrls: ['./car-list.component.scss']

@@ -3,3 +3,29 @@
     <app-car-list-item [car]="car" [isOdd]="isOdd"></app-car-list-item>
   </li>
 </ul>
+
+
+
+<div class="container">
+  <h2>Car List</h2>
+  <table>
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Make</th>
+      <th>Model</th>
+      <th>Year</th>
+      <th>Color</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let car of carList" [routerLink]="['/cars', car.id]">
+      <td>{{ car.id }}</td>
+      <td>{{ car.makingYear }}</td>
+      <td>{{ car.modelName }}</td>
+      <td>{{ car.companyName }}</td>
+      <td>{{ car.color }}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
