@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { carList } from '../data/mock-component';
-import { Observable, of } from 'rxjs';
+import { Observable, of} from 'rxjs';
 import { Car } from '../models/car';
 
 @Injectable({
@@ -37,4 +37,10 @@ export class CarService {
     this.cars = this.cars.filter(car => car.id !== carId);
     return of(this.cars);
   }
+
+  generateNewID(): number {
+return this.cars.length> 0 ? Math.max(...this.cars.map(car => car.id )) +1 : 1;
+  }
 }
+
+
