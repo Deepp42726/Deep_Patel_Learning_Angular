@@ -4,7 +4,7 @@ import {JsonPipe, NgFor, NgIf, NgOptimizedImage} from "@angular/common";
 import { CarListComponent } from "./car-list/car-list.component";
 import { CarService } from './services/car.service';
 import { Car } from './models/car';
-import {CarListItemComponent} from "./car-list-item/car-list-item.component";  // Corrected the type
+import {CarListItemComponent} from "./car-list-item/car-list-item.component";
 
 @Component({
   selector: 'app-root',

@@ -32,10 +32,13 @@ error: string | null = null;
   selectCar(car: Car): void {
     this.selectedCar = car;
   }
-  editCar(car: any) {
-    this.router.navigate(['/cars', car.id, 'edit']);
+  editCar(car: Car): void {
+    this.router.navigate(['/cars', car.id , 'edit']);
   }
   deleteCar(carID: number): void {
-    this.carService.deleteCar(carID);
-  }
+    this.carService.deleteCar(carID).subscribe(() => {
+      this.carList = this.carList.filter(car => car.id !== carID);
+    });
+    }
+
 }

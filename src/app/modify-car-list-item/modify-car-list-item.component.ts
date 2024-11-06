@@ -18,6 +18,9 @@ import {PageNotFoundComponent} from "../page-not-found/page-not-found.component"
 })
 export class ModifyCarListItemComponent implements OnInit {
   carForm: FormGroup;
+  car: Car | undefined;
+  error: string | null = null;
+
 
   constructor(
     private fb: FormBuilder,
@@ -26,7 +29,7 @@ export class ModifyCarListItemComponent implements OnInit {
     private router: Router
   ) {
     this.carForm = this.fb.group({
-      id: ['', Validators.required],
+      id: [carService.generateNewID()],
       make: ['', Validators.required],
       model: ['', Validators.required],
       year: ['', Validators.required],
@@ -66,5 +69,6 @@ export class ModifyCarListItemComponent implements OnInit {
         this.router.navigate(['/cars']);
       });
     }
+
   }
 }
