@@ -1,26 +1,23 @@
 import { Component, OnInit } from '@angular/core';
-import { PageNotFoundComponent } from "../page-not-found/page-not-found.component";
-import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from "@angular/forms";
-import { ActivatedRoute, Router } from "@angular/router";
-import { NgIf } from "@angular/common";
-import {CarService} from "../services/car.service";
-import {Car} from "../car";
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { CarService } from '../services/car.service';
+import { Car } from '../models/car';
+import {PageNotFoundComponent} from "../page-not-found/page-not-found.component";
 
 @Component({
   selector: 'app-modify-car-list-item',
   standalone: true,
   imports: [
     ReactiveFormsModule,
-    PageNotFoundComponent,
     FormsModule,
-    NgIf
+    PageNotFoundComponent
   ],
   templateUrl: './modify-car-list-item.component.html',
   styleUrls: ['./modify-car-list-item.component.css']
 })
 export class ModifyCarListItemComponent implements OnInit {
   carForm: FormGroup;
-  car: Car | undefined;
 
   constructor(
     private fb: FormBuilder,
@@ -33,7 +30,7 @@ export class ModifyCarListItemComponent implements OnInit {
       make: ['', Validators.required],
       model: ['', Validators.required],
       year: ['', Validators.required],
-      color: [''],
+      color: ['']
     });
   }
 
@@ -48,27 +45,26 @@ export class ModifyCarListItemComponent implements OnInit {
     }
   }
 
-  onSubmit(): void {
-    if (this.carForm.valid) {
-      const car = this.carForm.value;
-      if (car.id) {
-        this.carService.updateCar(car).subscribe(() => this.router.navigate(['/cars']));
-      }
-      else {
-this.carService.addCar(car).subscribe(() => this.router.navigate(['/cars']));
-      }
-    }
+  addCar(): void {
+    const newCar: Car = this.carForm.value;
+    this.carService.addCar(newCar).subscribe(() => {
+      this.router.navigate(['/cars']);
+    });
   }
 
+  updateCar(): void {
+    const updatedCar: Car = this.carForm.value;
+    this.carService.updateCar(updatedCar).subscribe(() => {
+      this.router.navigate(['/cars']);
+    });
+  }
 
   onDelete(): void {
     const id = this.carForm.value.id;
     if (id) {
-      this.carService.deleteCar(id).subscribe(() => this.router.navigate(['/cars']));
+      this.carService.deleteCar(id).subscribe(() => {
+        this.router.navigate(['/cars']);
+      });
     }
-  }
-
-  navigateToCarList(): void {
-    this.router.navigate(['/cars']);
   }
 }

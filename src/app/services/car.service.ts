@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { Observable, of } from 'rxjs';
 import { Car } from '../models/car';
 import { carList } from '../data/mock-component';
 
@@ -8,31 +7,36 @@ import { carList } from '../data/mock-component';
   providedIn: 'root'
 })
 export class CarService {
-  private apiUrl = 'api/cars';
   private cars: Car[] = carList;
 
-  constructor(private http: HttpClient) {}
+  constructor() {}
 
   getCars(): Observable<Car[]> {
-    return this.http.get<Car[]>(this.apiUrl);
+    return of(this.cars);
   }
 
-  getCarById(carId: number): Observable<Car> {
-    return this.http.get<Car>(`${this.apiUrl}/${carId}`);
+  getCarById(carId: number): Observable<Car | undefined> {
+    const car = this.cars.find(c => c.id === carId);
+    return of(car);
   }
 
-  addCar(newCar: Car): Observable<Car> {
-    return this.http.post<Car>(this.apiUrl, newCar);
+  addCar(newCar: Car): Observable<Car[]> {
+    newCar.id = this.generateNewID();
+    this.cars.push(newCar);
+    return of(this.cars);
   }
 
-  updateCar(updatedCar: Car): Observable<Car | undefined> {
-    const url = `${this.apiUrl}/${updatedCar.id}`;
-    return this.http.put<Car>(url, updatedCar);
+  updateCar(updatedCar: Car): Observable<Car[]> {
+    const index = this.cars.findIndex(car => car.id === updatedCar.id);
+    if (index !== -1) {
+      this.cars[index] = updatedCar;
+    }
+    return of(this.cars);
   }
 
-  deleteCar(carId: number): Observable<{}> {
-    const url = `${this.apiUrl}/${carId}`;
-    return this.http.delete(url);
+  deleteCar(carId: number): Observable<Car[]> {
+    this.cars = this.cars.filter(car => car.id !== carId);
+    return of(this.cars);
   }
 
   generateNewID(): number {
