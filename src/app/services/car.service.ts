@@ -39,7 +39,10 @@ export class CarService {
   }
 
   private generateNewID(): number {
-    return this.cars.length > 0 ? Math.max(...this.cars.map(car => car.id)) + 1 : 1;
+    if (this.cars && this.cars.length > 0) {
+      return Math.max(...this.cars.map(car => car.id)) + 1;
+    }
+    return 1;
   }
 
   private handleError(error: HttpErrorResponse) {

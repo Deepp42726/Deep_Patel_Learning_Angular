@@ -5,11 +5,12 @@ import { CarListComponent } from "./car-list/car-list.component";
 import { CarService } from './services/car.service';
 import { Car } from './models/car';
 import {CarListItemComponent} from "./car-list-item/car-list-item.component";
+import {ReactiveFormsModule} from "@angular/forms";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, NgFor, JsonPipe, CarListComponent, RouterLinkActive, RouterLink, NgIf, CarListItemComponent, NgOptimizedImage],
+  imports: [RouterOutlet, NgFor, JsonPipe, CarListComponent, RouterLinkActive, RouterLink, NgIf, CarListItemComponent, NgOptimizedImage, ReactiveFormsModule],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })

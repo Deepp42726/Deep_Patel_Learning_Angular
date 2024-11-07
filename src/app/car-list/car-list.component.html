@@ -2,13 +2,11 @@
   <h2>Car List</h2>
 
 
-
   <ul>
     <li *ngFor="let car of carList; odd as isOdd; even as isEven">
       <app-car-list-item [car]="car" [isOdd]="isOdd"></app-car-list-item>
     </li>
   </ul>
-
 
   <table>
     <thead>

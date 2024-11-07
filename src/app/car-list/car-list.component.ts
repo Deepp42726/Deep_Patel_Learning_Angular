@@ -4,11 +4,12 @@ import { Car } from '../models/car';
 import { CarListItemComponent } from "../car-list-item/car-list-item.component";
 import { CarService } from '../services/car.service';
 import {Router, RouterLink} from "@angular/router";
+import {FormsModule} from "@angular/forms";
 
 @Component({
   selector: 'app-car-list',
   standalone: true,
-  imports: [NgForOf, CarListItemComponent, RouterLink],
+  imports: [NgForOf, CarListItemComponent, RouterLink, FormsModule],
 
   templateUrl: './car-list.component.html',
   styleUrls: ['./car-list.component.scss']
@@ -33,12 +34,11 @@ error: string | null = null;
     this.selectedCar = car;
   }
   editCar(car: Car): void {
-    this.router.navigate(['/cars', car.id , 'edit']);
+    this.router.navigate(['/cars', car.id , 'Edit']);
   }
   deleteCar(carID: number): void {
     this.carService.deleteCar(carID).subscribe(() => {
       this.carList = this.carList.filter(car => car.id !== carID);
     });
     }
-
 }
