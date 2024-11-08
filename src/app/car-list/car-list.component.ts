@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import { NgForOf } from '@angular/common';
+import {NgForOf, NgIf} from '@angular/common';
 import { Car } from '../models/car';
 import { CarListItemComponent } from "../car-list-item/car-list-item.component";
 import { CarService } from '../services/car.service';
@@ -9,7 +9,7 @@ import {FormsModule} from "@angular/forms";
 @Component({
   selector: 'app-car-list',
   standalone: true,
-  imports: [NgForOf, CarListItemComponent, RouterLink, FormsModule],
+  imports: [NgForOf, CarListItemComponent, RouterLink, FormsModule, NgIf],
 
   templateUrl: './car-list.component.html',
   styleUrls: ['./car-list.component.scss']
