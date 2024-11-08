@@ -22,13 +22,13 @@ export class PageNotFoundComponent {
               private carService: CarService,
               private router: Router) {
     this.carForm = this.fb.group({
-    id: ['', Validators.required],
-    makingYear: ['', Validators.required],
-    companyName: ['', Validators.required],
-    modelYear: ['', Validators.required],
-    color: ['', Validators.required],
-    imgPath: ['', Validators.required],
-    isElectric: [false]
+    id: ['', ],
+    makingYear: ['', ],
+    companyName: ['', ],
+    modelYear: ['', ],
+    color: ['', ],
+    imgPath: ['', ],
+    isElectric: []
   });
   }
   onSubmit(): void {
