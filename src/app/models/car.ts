@@ -4,5 +4,6 @@ export interface Car {
   modelName: string;
   makingYear: number;
   color: string;
+  price: number;
   isElectric: boolean;
 }
