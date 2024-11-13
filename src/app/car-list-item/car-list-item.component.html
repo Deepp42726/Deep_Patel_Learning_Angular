@@ -1,7 +1,7 @@
 <p>car-list-item works!</p>
 
 <div [ngClass]="{'even-item': !isOdd, 'odd-item': isOdd}">
-  <h2>{{ car | fullCarName }}</h2>
+  <h2>{{car.id}}</h2>
   <p>Release Year: {{ car.makingYear }}</p>
   <p>Color: {{ car.color }}</p>
   <p>Price: {{ car.price | currency: 'CAD': 'symbol-narrow' }}</p>

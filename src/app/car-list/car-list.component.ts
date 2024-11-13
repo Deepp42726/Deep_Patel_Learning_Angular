@@ -5,7 +5,7 @@ import { CarListItemComponent } from "../car-list-item/car-list-item.component";
 import { CarService } from '../services/car.service';
 import { Router, RouterLink } from "@angular/router";
 import { FormsModule } from "@angular/forms";
-import { FullCarNamePipe } from '../pipes/full-car-name.pipe';
+import { CarDescriptionPipe } from '../pipes/car-description.pipe';
 
 @Component({
   selector: 'app-car-list',
@@ -17,7 +17,7 @@ import { FullCarNamePipe } from '../pipes/full-car-name.pipe';
     FormsModule,
     NgIf,
     CurrencyPipe,
-    FullCarNamePipe
+    CarDescriptionPipe
   ],
   templateUrl: './car-list.component.html',
   styleUrls: ['./car-list.component.scss']

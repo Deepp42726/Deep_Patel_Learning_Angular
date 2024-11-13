@@ -6,5 +6,6 @@ export interface Car {
   companyName: string;
   makingYear: number;
   color?: string;
+  price: number;
   isElectric: boolean;
 }

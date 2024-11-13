@@ -17,7 +17,7 @@
       <thead>
       <tr>
         <th>ID</th>
-        <th>Model Name</th>
+        <th>Description</th>
         <th>Year</th>
         <th>color</th>
         <th>Is electric</th>
@@ -26,7 +26,7 @@
       <tbody>
       <tr *ngFor="let car of carList">
         <td>{{ car.id }}</td>
-        <td>{{ car | fullCarName }}</td>
+        <td>{{ car.modelName }}</td>
         <td>{{ car.makingYear }}</td>
         <td>{{ car.price | currency: 'CAD': 'symbol-narrow' }}</td>
         <td>
