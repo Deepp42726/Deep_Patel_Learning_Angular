@@ -37,6 +37,9 @@ export class ModifyCarListItemComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.carForm.statusChanges.subscribe(status => console.log('Form Status:', status));
+    this.carForm.valueChanges.subscribe(value => console.log('Form Value:', value));
+
     const id = Number(this.route.snapshot.paramMap.get('id'));
     if (id) {
       this.carService.getCarById(id).subscribe({
@@ -45,27 +48,41 @@ export class ModifyCarListItemComponent implements OnInit {
             this.carForm.patchValue(car);
           }
         },
-        error: err => {
-          this.error = 'Error fetching car';
-          console.error('Error fetching car:', err);
-        }
+        error: err => console.error('Error fetching car:', err)
       });
     }
   }
 
+
   onSubmit(): void {
-    console.log('Form submitted:', this.carForm.value);
     if (this.carForm.valid) {
       const car: Car = this.carForm.value;
-      console.log('Car is valid:', car);
+
       if (car.id) {
-        this.carService.updateCar(car).subscribe(() => this.router.navigate(['/cars']));
+        // Update the existing car
+        this.carService.updateCar(car).subscribe({
+          next: () => {
+            console.log('Car updated successfully.');
+            this.router.navigate(['/cars'], { state: { refresh: true } }); // Navigate with state to trigger refresh
+          },
+          error: err => console.error('Error updating car:', err)
+        });
       } else {
-        // @ts-ignore
-        car.id = this.carService.getCars();
-        this.carService.addCar(car).subscribe(() => this.router.navigate(['/cars']));
+        // Add new car without manually generating an ID
+        this.carService.addCar(car).subscribe({
+          next: () => {
+            console.log('Car added successfully.');
+            this.router.navigate(['/cars'], { state: { refresh: true } }); // Navigate with state to trigger refresh
+          },
+          error: err => console.error('Error adding car:', err)
+        });
       }
+    } else {
+      console.error('Form is invalid:', this.carForm.errors);
     }
   }
+
+
+
 
 }

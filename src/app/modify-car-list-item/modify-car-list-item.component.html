@@ -1,21 +1,17 @@
-<p>modify-car-list-item works!</p>
-
-
 <form [formGroup]="carForm" (ngSubmit)="onSubmit()">
-
   <div class="form-group">
     <label for="id">ID</label>
     <input type="number" id="id" formControlName="id" required />
   </div>
 
   <div class="form-group">
-    <label for="brand">Model Name</label>
-    <input type="text" id="brand" formControlName="Model Name" required />
+    <label for="modelYear">Model Year</label>
+    <input type="text" id="modelYear" formControlName="modelYear" required />
   </div>
 
   <div class="form-group">
-    <label for="type">Making Year</label>
-    <input type="text" id="type" formControlName="Making Year" required />
+    <label for="makingYear">Making Year</label>
+    <input type="text" id="makingYear" formControlName="makingYear" required />
   </div>
 
   <div class="form-group">
@@ -24,16 +20,19 @@
   </div>
 
   <div class="form-group">
-    <label for="model">Company Name</label>
-    <input type="number" id="model" formControlName="Compnay" />
+    <label for="companyName">Company Name</label>
+    <input type="text" id="companyName" formControlName="companyName" required />
+  </div>
+
+  <div class="form-group">
+    <label for="imgPath">Image Path</label>
+    <input type="text" id="imgPath" formControlName="imgPath" required />
   </div>
 
   <div class="form-group">
     <label for="isElectric">Is Electric</label>
-    <input type="checkbox" id="isElectric" formControlName="IsElectric" />
+    <input type="checkbox" id="isElectric" formControlName="isElectric" />
   </div>
 
   <button type="submit">Submit</button>
-  <button type="button" (click)="onSubmit()">Back to Home</button>
-
 </form>

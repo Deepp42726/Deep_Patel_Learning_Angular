@@ -1,13 +1,11 @@
 <div class="container">
   <h2>{{ title }}</h2>
 
-  <div *ngIf="selectedCar">
-    <app-car-list-item [car]="selectedCar"></app-car-list-item>
-  </div>
 
   <div class="nav-bar">
     <nav>
-      <a routerLink="/content-list-component" routerLinkActive="active">Home</a>
+      <a routerLink="/cars" class="home-link">Home</a>
+
       <br><br>
       <a routerLink="/modify-list-item" routerLinkActive="active">Modify Car</a>
       <br><br>
@@ -17,15 +15,6 @@
     <br><br>
 
   </div>
-
-  <div *ngFor="let car of carList" class="car-item">
-    <h3>{{ car.modelName }} - {{ car.companyName }}</h3>
-    <p>Making Year: {{ car.makingYear }}</p>
-    <p *ngIf="car.color">Color: {{ car.color }}</p>
-    <p>Is Electric? {{ car.isElectric ? 'Yes' : 'No' }}</p>
-
-
- </div>
 
   <router-outlet></router-outlet>
 </div>

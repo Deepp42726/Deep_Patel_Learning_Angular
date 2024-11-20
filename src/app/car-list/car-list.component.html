@@ -2,37 +2,12 @@
   <h2>Car List</h2>
 
 
-
   <ul>
     <li *ngFor="let car of carList; odd as isOdd; even as isEven">
       <app-car-list-item [car]="car" [isOdd]="isOdd"></app-car-list-item>
+      <button (click)="editCar(car)">Edit</button>
+      <button (click)="deleteCar(car.id)">Delete</button>
     </li>
   </ul>
 
-
-  <table>
-    <thead>
-    <tr>
-      <th>ID</th>
-      <th>Make</th>
-      <th>Model</th>
-      <th>Year</th>
-      <th>Color</th>
-      <th>Actions</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let car of carList" [routerLink]="['/cars', car.id]">
-      <td>{{ car.id }}</td>
-      <td>{{ car.makingYear }}</td>
-      <td>{{ car.modelName }}</td>
-      <td>{{ car.isElectric }}</td>
-      <td>{{ car.color }}</td>
-      <td>
-        <button (click)="editCar(car)">Edit</button>
-        <button (click)="deleteCar(car.id)">Delete</button>
-      </td>
-    </tr>
-    </tbody>
-  </table>
 </div>
