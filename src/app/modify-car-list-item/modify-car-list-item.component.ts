@@ -1,16 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CarService } from '../services/car.service';
 import { Car } from '../models/car';
-import {PageNotFoundComponent} from "../page-not-found/page-not-found.component";
+import { PageNotFoundComponent } from "../page-not-found/page-not-found.component";
 
 @Component({
   selector: 'app-modify-car-list-item',
   standalone: true,
   imports: [
     ReactiveFormsModule,
-    FormsModule,
     PageNotFoundComponent
   ],
   templateUrl: './modify-car-list-item.component.html',
@@ -18,6 +17,7 @@ import {PageNotFoundComponent} from "../page-not-found/page-not-found.component"
 })
 export class ModifyCarListItemComponent implements OnInit {
   carForm: FormGroup;
+  error: string | null = null;
 
   constructor(
     private fb: FormBuilder,
@@ -27,44 +27,45 @@ export class ModifyCarListItemComponent implements OnInit {
   ) {
     this.carForm = this.fb.group({
       id: ['', Validators.required],
-      make: ['', Validators.required],
-      model: ['', Validators.required],
-      year: ['', Validators.required],
-      color: ['']
+      makingYear: ['', Validators.required],
+      companyName: ['', Validators.required],
+      modelYear: ['', Validators.required],
+      color: ['', Validators.required],
+      imgPath: ['', Validators.required],
+      isElectric: [false]
     });
   }
 
   ngOnInit(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
     if (id) {
-      this.carService.getCarById(id).subscribe(car => {
-        if (car) {
-          this.carForm.patchValue(car);
+      this.carService.getCarById(id).subscribe({
+        next: car => {
+          if (car) {
+            this.carForm.patchValue(car);
+          }
+        },
+        error: err => {
+          this.error = 'Error fetching car';
+          console.error('Error fetching car:', err);
         }
       });
     }
   }
 
-  addCar(): void {
-    const newCar: Car = this.carForm.value;
-    this.carService.addCar(newCar).subscribe(() => {
-      this.router.navigate(['/cars']);
-    });
-  }
-
-  updateCar(): void {
-    const updatedCar: Car = this.carForm.value;
-    this.carService.updateCar(updatedCar).subscribe(() => {
-      this.router.navigate(['/cars']);
-    });
-  }
-
-  onDelete(): void {
-    const id = this.carForm.value.id;
-    if (id) {
-      this.carService.deleteCar(id).subscribe(() => {
-        this.router.navigate(['/cars']);
-      });
+  onSubmit(): void {
+    console.log('Form submitted:', this.carForm.value);
+    if (this.carForm.valid) {
+      const car: Car = this.carForm.value;
+      console.log('Car is valid:', car);
+      if (car.id) {
+        this.carService.updateCar(car).subscribe(() => this.router.navigate(['/cars']));
+      } else {
+        // @ts-ignore
+        car.id = this.carService.getCars();
+        this.carService.addCar(car).subscribe(() => this.router.navigate(['/cars']));
+      }
     }
   }
+
 }
