@@ -2,9 +2,17 @@
 
 <div [ngClass]="{'even-item': !isOdd, 'odd-item': isOdd}">
   <h2>{{ car.id }}</h2>
+  <ul>
+    <li [appHoverHighlight]="'lightgrey'">{{ "You have selected best car" }}</li>
+  </ul>
   <p>Car Name: {{ car.companyName | fullCarName: car.modelName }}</p>
   <p>Release Year: {{ car.makingYear }}</p>
   <p>Color: {{ car.color | uppercase }}</p>
   <p>Price: {{ car.price | currency: 'CAD':'symbol-narrow' }}</p>
   <p>Is Electric?: {{ car.isElectric }}</p>
+
+
+
 </div>
+
+

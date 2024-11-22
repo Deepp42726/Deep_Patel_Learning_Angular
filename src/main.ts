@@ -6,10 +6,12 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './app/services/in-memory-data.service';
 import { provideHttpClient } from '@angular/common/http';
 import { importProvidersFrom } from '@angular/core';
+import {ModifyCarListItemComponent} from "./app/modify-car-list-item/modify-car-list-item.component";
 
 const routes: Routes = [
   { path: '', redirectTo: '/cars', pathMatch: 'full' },
   { path: 'cars', loadComponent: () => import('./app/car-list/car-list.component').then(m => m.CarListComponent) },
+  { path: 'modify-list-item', component: ModifyCarListItemComponent },
   { path: 'modify-list-item', loadComponent: () => import('./app/modify-car-list-item/modify-car-list-item.component').then(m => m.ModifyCarListItemComponent) },
   { path: '**', component: PageNotFoundComponent }
 ];
