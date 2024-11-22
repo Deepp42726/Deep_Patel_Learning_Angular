@@ -1,52 +1,7 @@
 <p>page-not-found works!</p>
 
 <div class="page-not-found">
-
   <h3>404 - Page Not Found</h3>
-
   <p>The page you are looking for "Not Found"</p>
   <a routerLink="/cars" class="home-link">Go back to Home</a>
-
-<br>
-  <br>
-  <br>
-
-
-  <form [formGroup]="carForm" (ngSubmit)="onSubmit()">
-
-    <div class="form-group">
-      <label for="id">ID</label>
-      <input type="Text" id="id" formControlName="id" required />
-    </div>
-
-    <div class="form-group">
-      <label for="brand">Model Name</label>
-      <input type="text" id="brand" formControlName="Model Name" required />
-    </div>
-
-    <div class="form-group">
-      <label for="type">Making Year</label>
-      <input type="text" id="type" formControlName="Making Year" required />
-    </div>
-
-    <div class="form-group">
-      <label for="color">Color</label>
-      <input type="text" id="color" formControlName="color" required />
-    </div>
-
-    <div class="form-group">
-      <label for="model">Company Name</label>
-      <input type="number" id="model" formControlName="Compnay" />
-    </div>
-    <div class="form-group">
-      <label for="isElectric">Is Electric</label>
-      <input type="checkbox" id="isElectric" formControlName="IsElectric" />
-    </div>
-
-    <button type="submit">Submit</button>
-    <button type="button" (click)="onSubmit()">Back to Home</button>
-
-  </form>
-
-
 </div>

@@ -5,7 +5,6 @@ import { CarListItemComponent } from "../car-list-item/car-list-item.component";
 import { CarService } from '../services/car.service';
 import { Router, RouterLink } from "@angular/router";
 import { FormsModule } from "@angular/forms";
-import { CarDescriptionPipe } from '../pipes/car-description.pipe';
 
 @Component({
   selector: 'app-car-list',
@@ -17,7 +16,6 @@ import { CarDescriptionPipe } from '../pipes/car-description.pipe';
     FormsModule,
     NgIf,
     CurrencyPipe,
-    CarDescriptionPipe
   ],
   templateUrl: './car-list.component.html',
   styleUrls: ['./car-list.component.scss']
@@ -46,7 +44,7 @@ export class CarListComponent implements OnInit {
   }
 
   editCar(car: Car): void {
-    this.router.navigate(['/cars', car.id, 'Edit']);
+    this.router.navigate(['/modify-list-item', car.id]);
   }
 
   deleteCar(carID: number): void {

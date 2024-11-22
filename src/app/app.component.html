@@ -1,13 +1,14 @@
 <div class="container">
   <h2>{{ title }}</h2>
 
-
   <div class="nav-bar">
     <nav>
       <a routerLink="/cars" class="home-link">Home</a>
+      <br><br>
+      <a [routerLink]="['/modify-list-item']" routerLinkActive="active">Modify Car</a>
 
       <br><br>
-      <a routerLink="/modify-list-item" routerLinkActive="active">Modify Car</a>
+      <a routerLink="/page-not-found" routerLinkActive="active">Page Not Found</a>
     </nav>
   </div>
 
