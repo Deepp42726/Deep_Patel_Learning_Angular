@@ -9,32 +9,4 @@
     </li>
   </ul>
 
-  <div class="container">
-    <h2>Car List</h2>
-    <table>
-      <thead>
-      <tr>
-        <th>ID</th>
-        <th>Description</th>
-        <th>Year</th>
-        <th>Color</th>
-        <th>Is electric</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr *ngFor="let car of carList">
-        <td>{{ car.id }}</td>
-        <td>{{ car.modelName }}</td>
-        <td>{{ car.makingYear }}</td>
-        <td>{{ car.price | currency: 'CAD': 'symbol-narrow' }}</td>
-        <td>
-          <button (click)="editCar(car)">Edit</button>
-          <button (click)="deleteCar(car.id)">Delete</button>
-        </td>
-      </tr>
-      </tbody>
-    </table>
-
-    <div *ngIf="error" class="error">{{ error }}</div>
   </div>
-</div>
