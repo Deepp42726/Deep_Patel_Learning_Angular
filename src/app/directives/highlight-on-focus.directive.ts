@@ -6,7 +6,7 @@ import { Directive, ElementRef, Renderer2, HostListener, Input } from '@angular/
 })
 export class HighlightOnFocusDirective {
 
-  @Input() HighlightOnFocus: string = 'grey';
+  @Input() HighlightOnFocus = '';
 
   constructor(private el: ElementRef, private renderer:Renderer2) {
 
@@ -14,6 +14,6 @@ export class HighlightOnFocusDirective {
 
   @HostListener('focus') onFocus(): void
   {
-    this.renderer.setStyle( this.el.nativeElement, 'backgroundColor', this.HighlightOnFocus);
+    this.renderer.setStyle( this.el.nativeElement, 'backgroundColor', this.HighlightOnFocus || 'grey');
   }
 }

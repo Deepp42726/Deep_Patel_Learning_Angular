@@ -6,19 +6,19 @@ import {Directive, ElementRef, HostListener, Input} from '@angular/core';
 })
 export class HoverHighlightDirective {
 
-  @Input('appHoverHighlight') highlightColor: string = 'Grey';
+  @Input() appHoverHighlight = '';
 
   constructor(private el: ElementRef) { }
 
   @HostListener('mouseenter') onMouseEnter() {
-    this.changeColor(this.highlightColor);
+    this.changeColor(this.appHoverHighlight || 'grey');
   }
 
   @HostListener('mouseleave') onMouseLeave() {
-    this.changeColor(null);
+    this.changeColor('');
   }
 
-  private changeColor(color: string | null) {
+  private changeColor(color: string) {
     this.el.nativeElement.style.backgroundColor = color;
   }
 
