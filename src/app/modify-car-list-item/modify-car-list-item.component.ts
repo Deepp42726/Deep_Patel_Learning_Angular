@@ -3,13 +3,15 @@ import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/
 import { ActivatedRoute, Router } from '@angular/router';
 import { Car } from '../models/car';
 import { CarService } from '../services/car.service';
+import {HighlightOnFocusDirective} from "../directives/highlight-on-focus.directive";
 
 @Component({
   selector: 'app-modify-car-list-item',
   templateUrl: './modify-car-list-item.component.html',
   standalone: true,
   imports: [
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HighlightOnFocusDirective
   ],
   styleUrls: ['./modify-car-list-item.component.css']
 })
