@@ -1,17 +1,12 @@
+<mat-toolbar color="primary">
+  <span>Car Management System</span>
+  <span class="spacer"></span>
+  <button mat-button routerLink="/cars" routerLinkActive="active">Home</button>
+  <button mat-button routerLink="/modify-list-item" routerLinkActive="active">Modify Car</button>
+  <button mat-button routerLink="/page-not-found" routerLinkActive="active">Page Not Found</button>
+</mat-toolbar>
+
 <div class="container">
   <h2>{{ title }}</h2>
-
-  <div class="nav-bar">
-    <nav>
-      <a routerLink ="/cars" class="home-link">Home</a>
-      <br><br>
-      <a [routerLink]="['/modify-list-item']" routerLinkActive="active">Modify Car</a>
-
-      <br><br>
-      <a routerLink ="/page-not-found" routerLinkActive="active">Page Not Found</a>
-    </nav>
-  </div>
-
-
-    <router-outlet></router-outlet>
+  <router-outlet></router-outlet>
 </div>
