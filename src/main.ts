@@ -10,6 +10,7 @@ import { ModifyCarListItemComponent } from './app/modify-car-list-item/modify-ca
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 const routes: Routes = [
   { path: '', redirectTo: '/cars', pathMatch: 'full' },
@@ -26,6 +27,6 @@ bootstrapApplication(AppComponent, {
     importProvidersFrom(HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, { delay: 1000 })),
     MatTableModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule, provideAnimationsAsync()
   ]
 }).catch(err => console.error(err));

@@ -1,12 +1,50 @@
-<div class="container">
+<div class="mat-container">
   <h2>Car List</h2>
 
-  <ul>
-    <li *ngFor="let car of carList; odd as isOdd; even as isEven">
-      <app-car-list-item [car]="car" [isOdd]="isOdd"></app-car-list-item>
-      <button (click)="editCar(car)">Edit</button>
-      <button (click)="deleteCar(car.id)">Delete</button>
-    </li>
-  </ul>
+  <!-- Material Table -->
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
+    <!-- ID Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef>ID</th>
+      <td mat-cell *matCellDef="let car">{{ car.id }}</td>
+    </ng-container>
+
+    <!-- Full Name Column -->
+    <ng-container matColumnDef="fullName">
+      <th mat-header-cell *matHeaderCellDef>Full Name</th>
+      <td mat-cell *matCellDef="let car">{{ car.fullName }}</td>
+    </ng-container>
+
+    <!-- Year Column -->
+    <ng-container matColumnDef="year">
+      <th mat-header-cell *matHeaderCellDef>Year</th>
+      <td mat-cell *matCellDef="let car">{{ car.year }}</td>
+    </ng-container>
+
+    <!-- Price Column -->
+    <ng-container matColumnDef="price">
+      <th mat-header-cell *matHeaderCellDef>Price</th>
+      <td mat-cell *matCellDef="let car">{{ car.price | currency: 'CAD': 'symbol-narrow' }}</td>
+    </ng-container>
+
+    <!-- Actions Column -->
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>Actions</th>
+      <td mat-cell *matCellDef="let car">
+        <button mat-raised-button color="primary" (click)="editCar(car)">Edit</button>
+        <button mat-raised-button color="warn" (click)="deleteCar(car.id)">Delete</button>
+      </td>
+    </ng-container>
+
+    <!-- Header and Row Definitions -->
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let car; columns: displayedColumns"></tr>
+  </table>
+
+  <!-- Pagination -->
+  <mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons></mat-paginator>
+
+  <!-- Error Message -->
+  <div *ngIf="error" class="error mat-error">{{ error }}</div>
 </div>

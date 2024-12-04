@@ -1,9 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Car } from '../models/car';
 import { CarService } from '../services/car.service';
-import {HighlightOnFocusDirective} from "../directives/highlight-on-focus.directive";
+import { HighlightOnFocusDirective } from "../directives/highlight-on-focus.directive";
+import { MatCheckboxModule } from "@angular/material/checkbox";
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatInputModule } from "@angular/material/input";
+import { MatButtonModule } from "@angular/material/button";
 
 @Component({
   selector: 'app-modify-car-list-item',
@@ -11,7 +15,11 @@ import {HighlightOnFocusDirective} from "../directives/highlight-on-focus.direct
   standalone: true,
   imports: [
     ReactiveFormsModule,
-    HighlightOnFocusDirective
+    HighlightOnFocusDirective,
+    MatCheckboxModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule
   ],
   styleUrls: ['./modify-car-list-item.component.css']
 })
@@ -64,5 +72,4 @@ export class ModifyCarListItemComponent implements OnInit {
       });
     }
   }
-
 }

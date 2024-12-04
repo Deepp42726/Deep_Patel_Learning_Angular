@@ -1,18 +1,24 @@
-<p>car-list-item works!</p>
-
-<div [ngClass]="{'even-item': !isOdd, 'odd-item': isOdd}">
-  <h2>{{ car.id }}</h2>
-  <ul>
-    <li [appHoverHighlight]="'lightgrey'">{{ "You have selected best car" }}</li>
-  </ul>
-  <p>Car Name: {{ car.companyName | fullCarName: car.modelName }}</p>
-  <p>Release Year: {{ car.makingYear }}</p>
-  <p>Color: {{ car.color | uppercase }}</p>
-  <p>Price: {{ car.price | currency: 'CAD':'symbol-narrow' }}</p>
-  <p>Is Electric?: {{ car.isElectric }}</p>
-
-
-
-</div>
-
-
+<mat-card class="car-card" [ngClass]="{ 'even-item': !isOdd, 'odd-item': isOdd }">
+  <mat-card-header>
+    <mat-card-title>Car Details</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <p><strong>ID:</strong> {{ car.id }}</p>
+    <p><strong>Car Name:</strong> {{ car.companyName | fullCarName: car.modelName }}</p>
+    <p><strong>Release Year:</strong> {{ car.makingYear }}</p>
+    <p><strong>Color:</strong> {{ car.color | uppercase }}</p>
+    <p><strong>Price:</strong> {{ car.price | currency: 'CAD': 'symbol-narrow' }}</p>
+    <p><strong>Is Electric?:</strong> {{ car.isElectric ? 'Yes' : 'No' }}</p>
+    <ul>
+      <li [appHoverHighlight]="'lightgrey'">You have selected the best car</li>
+    </ul>
+  </mat-card-content>
+  <div class="action-buttons">
+    <button mat-raised-button color="primary">
+      <mat-icon>edit</mat-icon> Edit
+    </button>
+    <button mat-raised-button color="warn">
+      <mat-icon>delete</mat-icon> Delete
+    </button>
+  </div>
+</mat-card>

@@ -1,38 +1,33 @@
-<p>modify-car-list-item works!</p>
+<form [formGroup]="carForm" (ngSubmit)="onSubmit()" class="mat-form">
+  <mat-form-field appearance="outline" class="form-field">
+    <mat-label>ID</mat-label>
+    <input matInput type="number" HighlightOnFocus="darkgrey" id="id" formControlName="id" />
+  </mat-form-field>
 
-<form [formGroup]="carForm" (ngSubmit)="onSubmit()">
+  <mat-form-field appearance="outline" class="form-field">
+    <mat-label>Model Name</mat-label>
+    <input matInput type="text" HighlightOnFocus="darkgrey" id="modelName" formControlName="modelName" />
+  </mat-form-field>
 
-  <div class="form-group">
-    <label for="id">ID</label>
-    <input type="number" HighlightOnFocus="darkgrey" id="id" formControlName="id" required />
+  <mat-form-field appearance="outline" class="form-field">
+    <mat-label>Making Year</mat-label>
+    <input matInput type="text" HighlightOnFocus="darkgrey" id="makingYear" formControlName="makingYear" />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="form-field">
+    <mat-label>Color</mat-label>
+    <input matInput type="text" HighlightOnFocus="darkgrey" id="color" formControlName="color" />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="form-field">
+    <mat-label>Company Name</mat-label>
+    <input matInput type="text" HighlightOnFocus="darkgrey" id="companyName" formControlName="companyName" />
+  </mat-form-field>
+
+  <mat-checkbox formControlName="isElectric" class="checkbox">Is Electric</mat-checkbox>
+
+  <div class="button-group">
+    <button mat-raised-button color="primary" type="submit" (click)="carForm.invalid">Submit</button>
+    <button mat-button type="button" (click)="router.navigate(['/cars'])">Back to Home</button>
   </div>
-
-  <div class="form-group">
-    <label for="modelName">Model Name</label>
-    <input type="text" HighlightOnFocus="darkgrey" id="modelName" formControlName="modelName" required />
-  </div>
-
-  <div class="form-group">
-    <label for="makingYear">Making Year</label>
-    <input type="text" HighlightOnFocus="darkgrey" id="makingYear" formControlName="makingYear" required />
-  </div>
-
-  <div class="form-group">
-    <label for="color">Color</label>
-    <input type="text" HighlightOnFocus="darkgrey" id="color" formControlName="color" required />
-  </div>
-
-  <div class="form-group">
-    <label for="companyName">Company Name</label>
-    <input type="text" HighlightOnFocus="darkgrey" id="companyName" formControlName="companyName" required />
-  </div>
-
-  <div class="form-group">
-    <label for="isElectric">Is Electric</label>
-    <input type="checkbox" HighlightOnFocus="darkgrey" id="isElectric" formControlName="isElectric" />
-  </div>
-
-  <button type="submit" (click)="carForm.invalid">Submit</button>
-  <button type="button" (click)="router.navigate(['/cars'])">Back to Home</button>
-
 </form>
