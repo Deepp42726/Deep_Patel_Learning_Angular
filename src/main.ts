@@ -6,7 +6,10 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './app/services/in-memory-data.service';
 import { provideHttpClient } from '@angular/common/http';
 import { importProvidersFrom } from '@angular/core';
-import {ModifyCarListItemComponent} from "./app/modify-car-list-item/modify-car-list-item.component";
+import { ModifyCarListItemComponent } from './app/modify-car-list-item/modify-car-list-item.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 const routes: Routes = [
   { path: '', redirectTo: '/cars', pathMatch: 'full' },
@@ -20,6 +23,9 @@ bootstrapApplication(AppComponent, {
   providers: [
     provideHttpClient(),
     provideRouter(routes),
-    importProvidersFrom(HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, { delay: 1000 }))
+    importProvidersFrom(HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, { delay: 1000 })),
+    MatTableModule,
+    MatButtonModule,
+    MatIconModule
   ]
 }).catch(err => console.error(err));
